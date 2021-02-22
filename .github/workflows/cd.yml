@@ -12,8 +12,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - run: docker build .
-      - run: docker create -ti --name dummy IMAGE_NAME bash
+      - run: docker build -t build_tmp .
+      - run: docker create -ti --name dummy build_tmp bash
       - run: docker cp dummy:/src/build build
       - run: docker rm -f dummy
         
